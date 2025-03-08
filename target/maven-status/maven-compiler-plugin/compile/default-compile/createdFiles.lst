@@ -1,0 +1,6 @@
+com\shgplatform\ShgPlatformApplication.class
+com\shgplatform\controller\UserController.class
+com\shgplatform\model\User.class
+com\shgplatform\repository\UserRepository.class
+com\shgplatform\config\SwaggerConfig.class
+com\shgplatform\service\UserService.class
