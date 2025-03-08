@@ -14,7 +14,7 @@ export default function SignupPage() {
                 Back to Home
               </Link>
               <div className="flex items-center mb-8">
-                <Image src="/placeholder.svg?height=40&width=40" alt="SHG Platform Logo" width={40} height={40} />
+                <Image src="/AvinyaaLogo.png" alt="SHG Platform Logo" width={40} height={40} />
                 <span className="ml-2 text-xl font-bold text-gray-900">SHG Platform</span>
               </div>
               <h2 className="mt-6 text-3xl font-bold tracking-tight text-gray-900">Create your account</h2>

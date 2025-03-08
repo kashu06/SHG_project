@@ -11,8 +11,8 @@ export default function GovernmentSchemes() {
       <header className="sticky top-0 z-50 bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="/placeholder.svg?height=40&width=40" alt="SHG Platform Logo" width={40} height={40} />
-            <span className="font-bold text-xl text-primary">SHG Platform</span>
+            <Image src="/AvinyaaLogo.png" alt="SHG Platform Logo" width={40} height={40} />
+            <span className="font-bold text-xl text-primary">Avinyaa</span>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-6">

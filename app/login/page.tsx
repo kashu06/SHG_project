@@ -15,7 +15,7 @@ export default function LoginPage() {
               </Link>
               <div className="flex items-center mb-8">
                 <Image src="/placeholder.svg?height=40&width=40" alt="SHG Platform Logo" width={40} height={40} />
-                <span className="ml-2 text-xl font-bold text-gray-900">SHG Platform</span>
+                <span className="ml-2 text-xl font-bold text-gray-900">Avinyaa</span>
               </div>
               <h2 className="mt-6 text-3xl font-bold tracking-tight text-gray-900">Sign in to your account</h2>
               <p className="mt-2 text-sm text-gray-600">
