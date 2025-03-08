@@ -1,4 +1,5 @@
 import Link from "next/link"
+<<<<<<< HEAD
 import Image from "next/image"
 import { ArrowRight, BarChart2, ShoppingBag, Award, BookOpen } from "lucide-react"
 
@@ -481,6 +482,123 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
+=======
+import { Button } from "@/components/ui/button"
+import { ArrowRightIcon, UsersIcon, WalletIcon, LineChartIcon } from "lucide-react"
+import Image from "next/image"
+
+export default function Home() {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <header className="px-4 lg:px-6 h-16 flex items-center border-b">
+        <Link href="/" className="flex items-center gap-2">
+          <WalletIcon className="h-6 w-6" />
+          <span className="font-bold">SHG Ledger</span>
+        </Link>
+        <nav className="ml-auto flex gap-4 sm:gap-6">
+          <Link href="/dashboard" className="text-sm font-medium hover:underline underline-offset-4">
+            Dashboard
+          </Link>
+          <Link href="/members" className="text-sm font-medium hover:underline underline-offset-4">
+            Members
+          </Link>
+          <Link href="/transactions" className="text-sm font-medium hover:underline underline-offset-4">
+            Transactions
+          </Link>
+          <Link href="/loans" className="text-sm font-medium hover:underline underline-offset-4">
+            Loans
+          </Link>
+          <Link href="/reports" className="text-sm font-medium hover:underline underline-offset-4">
+            Reports
+          </Link>
+        </nav>
+      </header>
+      <main className="flex-1">
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+          <div className="container px-4 md:px-6">
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
+              <div className="flex flex-col justify-center space-y-4">
+                <div className="space-y-2">
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">SHG Ledger Service</h1>
+                  <p className="text-gray-500 md:text-xl dark:text-gray-400">
+                    A comprehensive solution for Self Help Groups to manage finances, track member contributions, and
+                    streamline loan management.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                  <Link href="/dashboard">
+                    <Button className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
+                      Get Started <ArrowRightIcon className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+              <div className="mx-auto flex items-center justify-center">
+                <Image
+                  src="/placeholder.svg?height=400&width=500"
+                  alt="SHG members meeting"
+                  width={500}
+                  height={400}
+                  className="rounded-lg object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/40">
+          <div className="container px-4 md:px-6">
+            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              <div className="flex flex-col items-center gap-2 text-center">
+                <div className="bg-primary/10 p-4 rounded-full">
+                  <WalletIcon className="h-10 w-10 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold">Digital Record Keeping</h3>
+                <p className="text-gray-500 dark:text-gray-400">
+                  Securely store all financial records including deposits, withdrawals, and loans.
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-2 text-center">
+                <div className="bg-primary/10 p-4 rounded-full">
+                  <UsersIcon className="h-10 w-10 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold">Member Management</h3>
+                <p className="text-gray-500 dark:text-gray-400">
+                  Efficiently manage member details, contributions, and participation.
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-2 text-center">
+                <div className="bg-primary/10 p-4 rounded-full">
+                  <WalletIcon className="h-10 w-10 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold">Loan Tracking</h3>
+                <p className="text-gray-500 dark:text-gray-400">
+                  Keep a clear record of borrowed amounts, repayments, and outstanding balances.
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-2 text-center">
+                <div className="bg-primary/10 p-4 rounded-full">
+                  <LineChartIcon className="h-10 w-10 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold">Reports & Insights</h3>
+                <p className="text-gray-500 dark:text-gray-400">
+                  Generate financial summaries and analytics for better decision-making.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full border-t px-4 md:px-6">
+        <p className="text-xs text-gray-500 dark:text-gray-400">© 2025 SHG Ledger Service. All rights reserved.</p>
+        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
+          <Link href="#" className="text-xs hover:underline underline-offset-4">
+            Terms of Service
+          </Link>
+          <Link href="#" className="text-xs hover:underline underline-offset-4">
+            Privacy
+          </Link>
+        </nav>
+>>>>>>> 9dafe79 (ledger frontend)
       </footer>
     </div>
   )

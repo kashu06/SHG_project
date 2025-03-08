@@ -21,6 +21,7 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+<<<<<<< HEAD
   async rewrites() {
     return [
       {
@@ -29,6 +30,8 @@ const nextConfig = {
       },
     ];
   },
+=======
+>>>>>>> 9dafe79 (ledger frontend)
 }
 
 mergeConfig(nextConfig, userConfig)

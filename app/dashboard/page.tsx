@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Link from "next/link"
 import Image from "next/image"
 import { BarChart3, CreditCard, FileText, Award, BookOpen, Bell, User, ArrowUpRight, DollarSign } from "lucide-react"
@@ -233,6 +234,225 @@ export default function MemberDashboard() {
           </div>
         </div>
       </main>
+=======
+"use client"
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { LineChart, Users, PiggyBank, BadgeDollarSign, CreditCard } from "lucide-react"
+import { useState, useEffect } from "react"
+import { Button } from "@/components/ui/button"
+import { useToast } from "@/hooks/use-toast"
+import Link from "next/link"
+
+// Mock data for demonstration
+const mockDashboardData = {
+  totalMembers: 35,
+  totalSavings: 125000,
+  totalLoans: 78500,
+  pendingDues: 12000,
+  recentTransactions: [
+    { id: 1, memberName: "Priya Sharma", type: "Deposit", amount: 1000, date: "2025-03-08" },
+    { id: 2, memberName: "Kavita Patel", type: "Withdrawal", amount: 500, date: "2025-03-07" },
+    { id: 3, memberName: "Anita Desai", type: "Loan Repayment", amount: 2000, date: "2025-03-06" },
+    { id: 4, memberName: "Sunita Verma", type: "Deposit", amount: 1500, date: "2025-03-05" },
+    { id: 5, memberName: "Rekha Gupta", type: "Loan Disbursement", amount: 5000, date: "2025-03-04" },
+  ],
+  monthlyCollections: [
+    { month: "Jan", amount: 12500 },
+    { month: "Feb", amount: 15000 },
+    { month: "Mar", amount: 18000 },
+    { month: "Apr", amount: 17500 },
+    { month: "May", amount: 19000 },
+    { month: "Jun", amount: 20500 },
+  ],
+}
+
+export default function Dashboard() {
+  const [dashboardData, setDashboardData] = useState(mockDashboardData)
+  const [loading, setLoading] = useState(false)
+  const { toast } = useToast()
+
+  // In a real implementation, this would fetch from the Spring Boot backend
+  useEffect(() => {
+    // This would be replaced with an actual API call to your Spring Boot backend
+    const fetchDashboardData = async () => {
+      setLoading(true)
+      try {
+        // const response = await fetch('http://localhost:8080/api/dashboard');
+        // const data = await response.json();
+        // setDashboardData(data);
+
+        // Using mock data for now
+        setTimeout(() => {
+          setDashboardData(mockDashboardData)
+          setLoading(false)
+        }, 500)
+      } catch (error) {
+        console.error("Error fetching dashboard data:", error)
+        toast({
+          title: "Error",
+          description: "Failed to load dashboard data. Please try again.",
+          variant: "destructive",
+        })
+        setLoading(false)
+      }
+    }
+
+    fetchDashboardData()
+  }, [toast])
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      <div className="flex-1 space-y-4 p-8 pt-6">
+        <div className="flex items-center justify-between space-y-2">
+          <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+          <div className="flex items-center space-x-2">
+            <Link href="/members">
+              <Button>Add Member</Button>
+            </Link>
+            <Link href="/transactions">
+              <Button variant="outline">New Transaction</Button>
+            </Link>
+          </div>
+        </div>
+        <Tabs defaultValue="overview" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger value="reports">Reports</TabsTrigger>
+          </TabsList>
+          <TabsContent value="overview" className="space-y-4">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Total Members</CardTitle>
+                  <Users className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">{dashboardData.totalMembers}</div>
+                  <p className="text-xs text-muted-foreground">Active members in the group</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Total Savings</CardTitle>
+                  <PiggyBank className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">₹{dashboardData.totalSavings.toLocaleString()}</div>
+                  <p className="text-xs text-muted-foreground">+2.5% from last month</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Active Loans</CardTitle>
+                  <BadgeDollarSign className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">₹{dashboardData.totalLoans.toLocaleString()}</div>
+                  <p className="text-xs text-muted-foreground">15 active loans</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Pending Dues</CardTitle>
+                  <CreditCard className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">₹{dashboardData.pendingDues.toLocaleString()}</div>
+                  <p className="text-xs text-muted-foreground">Due in next 30 days</p>
+                </CardContent>
+              </Card>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+              <Card className="col-span-4">
+                <CardHeader>
+                  <CardTitle>Monthly Collections</CardTitle>
+                </CardHeader>
+                <CardContent className="pl-2">
+                  <div className="h-[300px] w-full">
+                    {/* In a real implementation, this would be a chart component */}
+                    <div className="flex h-[250px] items-end gap-2">
+                      {dashboardData.monthlyCollections.map((month) => (
+                        <div key={month.month} className="relative flex h-full w-full flex-col justify-end">
+                          <div
+                            className="bg-primary w-full rounded-md"
+                            style={{ height: `${(month.amount / 25000) * 100}%` }}
+                          />
+                          <span className="mt-2 text-center text-xs">{month.month}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="col-span-3">
+                <CardHeader>
+                  <CardTitle>Recent Transactions</CardTitle>
+                  <CardDescription>Last 5 transactions in the group</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    {dashboardData.recentTransactions.map((transaction) => (
+                      <div key={transaction.id} className="flex items-center">
+                        <div className="space-y-1">
+                          <p className="text-sm font-medium leading-none">{transaction.memberName}</p>
+                          <p className="text-sm text-muted-foreground">{transaction.type}</p>
+                        </div>
+                        <div className="ml-auto font-medium">₹{transaction.amount.toLocaleString()}</div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+          <TabsContent value="analytics" className="space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>Analytics</CardTitle>
+                <CardDescription>View detailed group performance analytics</CardDescription>
+              </CardHeader>
+              <CardContent className="h-[400px] flex items-center justify-center">
+                <div className="text-center space-y-2">
+                  <LineChart className="h-16 w-16 mx-auto text-muted-foreground" />
+                  <p>Detailed analytics will appear here.</p>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="reports" className="space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>Reports</CardTitle>
+                <CardDescription>Generate and download reports</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Button variant="outline" className="h-24 w-full flex flex-col items-center justify-center">
+                    <span>Monthly Collection Report</span>
+                    <span className="text-sm text-muted-foreground">Summary of all member contributions</span>
+                  </Button>
+                  <Button variant="outline" className="h-24 w-full flex flex-col items-center justify-center">
+                    <span>Loan Status Report</span>
+                    <span className="text-sm text-muted-foreground">Overview of all active loans</span>
+                  </Button>
+                  <Button variant="outline" className="h-24 w-full flex flex-col items-center justify-center">
+                    <span>Member Balance Report</span>
+                    <span className="text-sm text-muted-foreground">Individual balance statements</span>
+                  </Button>
+                  <Button variant="outline" className="h-24 w-full flex flex-col items-center justify-center">
+                    <span>Annual Financial Statement</span>
+                    <span className="text-sm text-muted-foreground">Complete financial overview</span>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
+      </div>
+>>>>>>> 9dafe79 (ledger frontend)
     </div>
   )
 }
